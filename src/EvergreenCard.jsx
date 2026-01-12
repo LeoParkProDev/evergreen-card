@@ -1,10 +1,14 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Phone, Mail, MapPin, Printer, CreditCard, Grid, ArrowLeft } from 'lucide-react';
 import { getCustomerData } from './data/customers';
 
 export default function EvergreenCard({ customerData }) {
   // customerData가 없으면 demo 데이터 사용
   const data = customerData || getCustomerData('demo');
+
+  // 고객 데이터에서 profile과 products 가져오기
+  const profile = data.profile;
+  const products = data.products;
 
   const [activeTab, setActiveTab] = useState('card'); // 'card' or 'catalog'
   const [showSpec, setShowSpec] = useState(false);
@@ -13,16 +17,23 @@ export default function EvergreenCard({ customerData }) {
   const [showToast, setShowToast] = useState(false);
   const scrollAreaRef = useRef(null);
 
+  // 브라우저 탭 제목 설정
+  useEffect(() => {
+    const defaultTitle = 'Evergreen Link - Digital Business Card';
+    document.title = profile.pageTitle || `${profile.company} ${profile.name}` || defaultTitle;
+
+    // 컴포넌트 언마운트 시 기본 제목으로 복원
+    return () => {
+      document.title = defaultTitle;
+    };
+  }, [profile]);
+
   // 색상 팔레트 (ex/index.html 기반)
   const colors = {
     primary: '#0f172a', // slate-900
     accent: '#2563eb', // blue-600
     secondary: '#ca8a04', // yellow-600
   };
-
-  // 고객 데이터에서 profile과 products 가져오기
-  const profile = data.profile;
-  const products = data.products;
 
   const handleSwitchTab = (tab) => {
     setActiveTab(tab);
