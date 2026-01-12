@@ -102,11 +102,11 @@ export const customers = {
       name: "박현수",
       position: "대표",
       phone: "010-4382-5877",
-      email: "info@evergreenfilter.com",
-      address: "경기도 안산시 단원구 산단로 123",
-      fax: "031-1234-5678",
-      tagline: "Since 1995",
-      description: "깨끗한 공기가 경쟁력입니다. 최고의 품질로 고객사의 환경을 책임지겠습니다.",
+      email: "egfilter153@gmail.com",
+      address: "경기도 고양시 덕양구 충장로 103번길 23",
+      fax: "010-4382-5877",
+      tagline: "2022",
+      description: "제조업 사장님들의 불편함을 해결해 드립니다.",
       pageTitle: "에버그린필터 박현수"
     },
     products: [
