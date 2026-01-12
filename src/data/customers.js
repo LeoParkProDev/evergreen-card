@@ -12,8 +12,8 @@ export const customers = {
       fax: "(031) 434-0965",
       tagline: "산업용 에어필터 제조 전문 기업",
       description: "깨끗한 공기가 경쟁력입니다. 최고의 품질로 고객사의 환경을 책임지겠습니다.",
-      profileImage: "/src/assets/logo_cfk.png",
-      bannerImage: "/src/assets/banner_cfk.jpg"
+      profileImage: "/assets/logo_cfk.png",
+      bannerImage: "/assets/banner_cfk.jpg"
     },
     products: [
       {
