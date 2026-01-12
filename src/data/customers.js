@@ -110,7 +110,7 @@ export const customers = {
       bannerHeadline: "제조업의 든든한 파트너",
       description: "제조업 사장님들의 모든 불편함을 해결해 드립니다.",
       profileImage: "/assets/image_2.jpg",
-      bannerImage: "/assets/banner_cfk.png",
+      bannerImage: "/assets/eglink.png",
       pageTitle: "에버그린필터 박현수"
     },
     products: [
