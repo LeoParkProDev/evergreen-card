@@ -109,7 +109,7 @@ export default function EvergreenCard({ customerData }) {
             <div className="relative h-52 bg-slate-800">
               <img
                 className="w-full h-full object-cover opacity-60"
-                src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&h=400&fit=crop"
+                src={profile.bannerImage || "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&h=400&fit=crop"}
                 alt="Company"
               />
               <div className="absolute bottom-0 left-0 p-5 w-full bg-gradient-to-t from-slate-900 to-transparent">
