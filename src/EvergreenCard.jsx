@@ -53,6 +53,12 @@ export default function EvergreenCard({ customerData }) {
   };
 
   const handleSwitchTab = (tab) => {
+    // 카탈로그 탭은 준비중
+    if (tab === 'catalog') {
+      showToastMessage('준비중인 기능입니다');
+      return;
+    }
+
     setActiveTab(tab);
     setShowSpec(false);
     if (scrollAreaRef.current) {
