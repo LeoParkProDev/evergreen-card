@@ -147,7 +147,7 @@ export default function EvergreenCard({ customerData }) {
               <div className="absolute bottom-0 left-0 p-5 w-full bg-gradient-to-t from-slate-900 to-transparent">
                 <div className="text-yellow-400 text-xs font-bold mb-1">{profile.tagline}</div>
                 <div className="text-white text-xl font-bold leading-tight">
-                  산업용 필터의 모든 것<br />{profile.company}
+                  {profile.bannerHeadline || "산업용 필터의 모든 것"}<br />{profile.company}
                 </div>
               </div>
             </div>
