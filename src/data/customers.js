@@ -98,7 +98,7 @@ export const customers = {
   // 박현수 - 에버그린필터
   'a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d': {
     profile: {
-      company: "에버그린필터",
+      company: "에버그린 솔루션즈",
       name: "박현수",
       position: "대표",
       phone: "010-4382-5877",
@@ -106,7 +106,6 @@ export const customers = {
       address: "경기도 고양시 덕양구 충장로 103번길 23",
       fax: "010-4382-5877",
       tagline: "Since 2022",
-      tagline: "산업용 에어필터 제조 전문 기업",
       description: "제조업 사장님들의 모든 불편함을 해결해 드립니다.",
       profileImage: "/assets/image_2.jpg",
       bannerImage: "/assets/banner_cfk.png",
