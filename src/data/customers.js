@@ -11,7 +11,6 @@ export const customers = {
       address: "경기도 안산시 단원구 정왕천동로10번길 33 (시화공단4바 767호)",
       fax: "(031) 434-0965",
       tagline: "산업용 에어필터 제조 전문 기업",
-      bannerHeadline: "산업용 필터의 모든 것",
       description: "깨끗한 공기가 경쟁력입니다. 최고의 품질로 고객사의 환경을 책임지겠습니다.",
       profileImage: "/assets/logo_cfk.png",
       bannerImage: "/assets/banner_cfk.png",
@@ -107,7 +106,11 @@ export const customers = {
       address: "경기도 고양시 덕양구 충장로 103번길 23",
       fax: "010-4382-5877",
       tagline: "Since 2022",
-      description: "제조업 사장님들의 불편함을 해결해 드립니다.",
+      tagline: "산업용 에어필터 제조 전문 기업",
+      description: "제조업 사장님들의 모든 불편함을 해결해 드립니다.",
+      profileImage: "/assets/image_2.jpg",
+      bannerImage: "/assets/banner_cfk.png",
+
       pageTitle: "에버그린필터 박현수"
     },
     products: [
