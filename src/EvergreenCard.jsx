@@ -17,14 +17,31 @@ export default function EvergreenCard({ customerData }) {
   const [showToast, setShowToast] = useState(false);
   const scrollAreaRef = useRef(null);
 
-  // 브라우저 탭 제목 설정
+  // 브라우저 탭 제목 및 파비콘 설정
   useEffect(() => {
     const defaultTitle = 'Evergreen Link - Digital Business Card';
     document.title = profile.pageTitle || `${profile.company} ${profile.name}` || defaultTitle;
 
+    // 파비콘 설정 (프로필 이미지 사용)
+    if (profile.profileImage) {
+      // 기존 파비콘 링크 찾기 또는 생성
+      let link = document.querySelector("link[rel~='icon']");
+      if (!link) {
+        link = document.createElement('link');
+        link.rel = 'icon';
+        document.head.appendChild(link);
+      }
+      link.href = profile.profileImage;
+    }
+
     // 컴포넌트 언마운트 시 기본 제목으로 복원
     return () => {
       document.title = defaultTitle;
+      // 파비콘도 기본으로 복원
+      const link = document.querySelector("link[rel~='icon']");
+      if (link) {
+        link.href = '/vite.svg';
+      }
     };
   }, [profile]);
 
