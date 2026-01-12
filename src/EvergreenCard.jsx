@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Phone, Mail, MapPin, Printer, CreditCard, Grid, ArrowLeft } from 'lucide-react';
+import { Phone, Mail, MapPin, MessageSquare, CreditCard, Grid, ArrowLeft } from 'lucide-react';
 import { getCustomerData } from './data/customers';
 
 export default function EvergreenCard({ customerData }) {
@@ -113,9 +113,10 @@ export default function EvergreenCard({ customerData }) {
     window.location.href = `mailto:${profile.email}`;
   };
 
-  // 팩스 (전화 걸기와 동일)
-  const handleFax = () => {
-    window.location.href = `tel:${profile.fax}`;
+  // 간편 문자
+  const handleSMS = () => {
+    const message = encodeURIComponent('안녕하세요, 연락 부탁드립니다.');
+    window.location.href = `sms:${profile.phone}?body=${message}`;
   };
 
   return (
@@ -186,10 +187,10 @@ export default function EvergreenCard({ customerData }) {
               </button>
               <button
                 className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center gap-1 active:scale-95 transition-transform"
-                onClick={handleCopyAddress}
+                onClick={handleSMS}
               >
-                <MapPin className="w-6 h-6 text-blue-600" />
-                <span className="text-xs font-bold text-slate-700">주소 복사</span>
+                <MessageSquare className="w-6 h-6 text-blue-600" />
+                <span className="text-xs font-bold text-slate-700">간편 문자</span>
               </button>
               <button
                 className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center gap-1 active:scale-95 transition-transform"
@@ -200,10 +201,10 @@ export default function EvergreenCard({ customerData }) {
               </button>
               <button
                 className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex flex-col items-center gap-1 active:scale-95 transition-transform"
-                onClick={handleFax}
+                onClick={handleCopyAddress}
               >
-                <Printer className="w-6 h-6 text-slate-600" />
-                <span className="text-xs font-bold text-slate-700">팩스</span>
+                <MapPin className="w-6 h-6 text-red-600" />
+                <span className="text-xs font-bold text-slate-700">주소 복사</span>
               </button>
             </div>
           </div>
