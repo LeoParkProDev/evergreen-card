@@ -192,6 +192,72 @@ export const customers = {
     ]
   },
 
+  // 박장식 - 원성산업기계
+  'b3c4d5e6-7f8a-9b0c-1d2e-3f4a5b6c7d8e': {
+    profile: {
+      company: "(주)원성산업기계",
+      name: "박장식",
+      position: "상무",
+      phone: "010-8873-1464",
+      email: "wonsung@example.com",
+      address: "경기도 화성시 남양읍 무하로 111번길 20",
+      fax: "",
+      tagline: "산업플랜트 공사 전문",
+      bannerHeadline: "산업플랜트의 든든한 파트너",
+      description: "산업플랜트 공사 / 화학 식품 탱크 배관 / 기계제작 설치공사",
+      profileImage: "",
+      bannerImage: "",
+      pageTitle: "(주)원성산업기계 박장식"
+    },
+    products: [
+      {
+        id: 'plant',
+        name: "산업플랜트 공사",
+        desc: "화학, 식품, 제약 등 각종 산업플랜트 설계 및 시공",
+        badge: "주력사업",
+        badgeColor: "bg-slate-800",
+        img: "https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=400&h=300&fit=crop",
+        spec: {
+          title: "산업플랜트 공사",
+          description: "화학, 식품, 제약 산업 등 다양한 분야의 플랜트 설계부터 시공, 유지보수까지 토탈 솔루션을 제공합니다.",
+          efficiency: "설계부터 시공까지 원스톱 서비스",
+          material: "고품질 스테인리스 스틸 및 특수 합금",
+          usage: "화학공장, 식품공장, 제약공장 등"
+        }
+      },
+      {
+        id: 'tank',
+        name: "화학 식품 탱크 배관",
+        desc: "스테인리스 탱크 제작 및 배관 설치",
+        badge: "전문분야",
+        badgeColor: "bg-blue-600",
+        img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400&h=300&fit=crop",
+        spec: {
+          title: "화학 식품 탱크 배관",
+          description: "화학 및 식품 산업용 스테인리스 탱크 제작과 배관 설치를 전문으로 합니다. 위생적이고 내구성 있는 시공을 보장합니다.",
+          efficiency: "위생등급 SUS304, SUS316L 사용",
+          material: "Stainless Steel (SUS304/316L)",
+          usage: "저장탱크, 반응탱크, 배관 라인"
+        }
+      },
+      {
+        id: 'machinery',
+        name: "기계제작 설치공사",
+        desc: "산업용 기계 설계, 제작 및 현장 설치",
+        badge: "맞춤제작",
+        badgeColor: "bg-green-600",
+        img: "https://images.unsplash.com/photo-1581092918484-8313e1f151c3?w=400&h=300&fit=crop",
+        spec: {
+          title: "기계제작 설치공사",
+          description: "고객 요구사항에 맞춘 맞춤형 산업기계 설계 및 제작, 현장 설치와 시운전까지 책임지고 진행합니다.",
+          efficiency: "3D 설계 및 정밀 가공",
+          material: "철강재, 스테인리스, 특수금속",
+          usage: "컨베이어, 호퍼, 믹서 등 산업기계"
+        }
+      }
+    ]
+  },
+
   // 샘플 데이터 (에버그린필터 - 기본 데모용)
   'demo': {
     profile: {
