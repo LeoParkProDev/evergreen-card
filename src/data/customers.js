@@ -202,11 +202,11 @@ export const customers = {
       email: "wonsung@example.com",
       address: "경기도 화성시 남양읍 무하로 111번길 20",
       fax: "",
-      tagline: "산업플랜트 공사 전문",
-      bannerHeadline: "산업플랜트의 든든한 파트너",
+      tagline: "Since 2015",
+      bannerHeadline: "산업플랜트 공사 / 화학 식품 탱크 배관 / 기계제작 설치공사",
       description: "산업플랜트 공사 / 화학 식품 탱크 배관 / 기계제작 설치공사",
       profileImage: "",
-      bannerImage: "",
+      bannerImage: "/assets/wsim.png",
       pageTitle: "(주)원성산업기계 박장식"
     },
     products: [
