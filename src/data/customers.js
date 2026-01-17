@@ -16,7 +16,7 @@ const customersDB = {
       description: '산업플랜트 공사 / 화학 식품 탱크 배관 / 기계제작 설치공사',
       bannerHeadline: '산업플랜트의 든든한 파트너',
       profileImage: null,
-      bannerImage: 'https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=800&h=400&fit=crop',
+      bannerImage: '/assets/wsim.png',
       pageTitle: '(주)원성산업기계 박장식',
     },
     products: [
