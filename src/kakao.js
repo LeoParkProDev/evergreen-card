@@ -48,34 +48,16 @@ export const initKakao = async () => {
   return true;
 };
 
-// 카카오톡 공유하기
-export const shareKakao = ({ title, description, imageUrl, buttonText = '명함 보기' }) => {
+// 카카오톡 공유하기 (sendScrap 방식 - 현재 URL 스크랩)
+export const shareKakao = () => {
   if (!window.Kakao?.isInitialized()) {
     console.warn('⚠️ Kakao SDK가 초기화되지 않았습니다.');
     return false;
   }
 
   try {
-    window.Kakao.Share.sendDefault({
-      objectType: 'feed',
-      content: {
-        title: title || 'Evergreen Link 디지털 명함',
-        description: description || '디지털 명함을 확인해보세요.',
-        imageUrl: imageUrl || `${window.location.origin}/assets/eglink.png`,
-        link: {
-          mobileWebUrl: window.location.href,
-          webUrl: window.location.href,
-        },
-      },
-      buttons: [
-        {
-          title: buttonText,
-          link: {
-            mobileWebUrl: window.location.href,
-            webUrl: window.location.href,
-          },
-        },
-      ],
+    window.Kakao.Share.sendScrap({
+      requestUrl: window.location.href,
     });
     return true;
   } catch (error) {

@@ -23,14 +23,7 @@ export default function KakaoShareButton({ profile, customerGuid }) {
     // 공유 이벤트 추적
     analytics.switchTab('share', 'kakao', customerGuid);
 
-    const success = shareKakao({
-      title: `${profile.company} ${profile.name}`,
-      description: profile.description || `${profile.position} | ${profile.phone}`,
-      imageUrl: profile.bannerImage
-        ? `${window.location.origin}${profile.bannerImage}`
-        : undefined,
-      buttonText: '명함 보기',
-    });
+    const success = shareKakao();
 
     if (!success) {
       alert('카카오톡 공유에 실패했습니다.');

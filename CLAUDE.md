@@ -169,6 +169,14 @@ analytics.requestQuote(productId, productName, customerGuid);
 - 분석은 모든 이벤트를 `customer_id` 파라미터와 함께 추적
 - GA4에서 고객별 분석 인사이트 제공
 
+## 배포 환경
+
+- **플랫폼**: Vercel
+- **환경변수 설정**: `.env` 파일은 로컬 전용이며 git에 포함되지 않음. 배포 환경의 환경변수는 Vercel 대시보드(Project Settings > Environment Variables)에서 사용자가 직접 설정해야 함
+- **필수 환경변수**:
+  - `VITE_GA_MEASUREMENT_ID`: Google Analytics 4 측정 ID
+  - `VITE_KAKAO_JS_KEY`: 카카오 JavaScript 키
+
 ## 작업 규칙
 
 - **빌드 검증 필수**: 모든 작업은 `npm run build` 로컬 빌드가 성공했는지 확인할 것 (작업 통과 조건)
