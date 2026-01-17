@@ -186,3 +186,22 @@ export const trackSessionStart = () => {
     timestamp: new Date().toISOString(),
   });
 };
+
+// 에러 추적 (ErrorBoundary에서 호출)
+export const trackError = (error, errorInfo) => {
+  if (!MEASUREMENT_ID) return;
+
+  const deviceId = getOrCreateDeviceId();
+  const errorData = {
+    error_message: error?.message || 'Unknown error',
+    error_name: error?.name || 'Error',
+    error_stack: error?.stack?.substring(0, 500) || '',
+    component_stack: errorInfo?.componentStack?.substring(0, 500) || '',
+    device_id: deviceId,
+    page_url: window.location.href,
+    timestamp: new Date().toISOString(),
+  };
+
+  trackGA4Event('app_error', errorData);
+  console.error('🚨 에러 추적:', errorData);
+};

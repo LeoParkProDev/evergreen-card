@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
 import CardPage from './CardPage.jsx'
+import ErrorBoundary from './components/ErrorBoundary.jsx'
 import { initGA, trackPageView, trackSessionStart } from './analytics'
 
 // GA4 초기화
@@ -29,11 +30,13 @@ function AnalyticsTracker() {
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <AnalyticsTracker />
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/:guid" element={<CardPage />} />
-      </Routes>
+      <ErrorBoundary>
+        <AnalyticsTracker />
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/:guid" element={<CardPage />} />
+        </Routes>
+      </ErrorBoundary>
     </BrowserRouter>
   </StrictMode>,
 )

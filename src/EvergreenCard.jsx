@@ -1,7 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Phone, Mail, MapPin, MessageSquare, CreditCard, Grid, ArrowLeft } from 'lucide-react';
 import { getCustomerData } from './data/customers';
 import { analytics } from './analytics';
+import KakaoShareButton from './components/KakaoShareButton';
 
 export default function EvergreenCard({ customerData, customerGuid }) {
   // customerData가 없으면 demo 데이터 사용
@@ -341,6 +342,9 @@ export default function EvergreenCard({ customerData, customerGuid }) {
           {toastMessage}
         </div>
       </div>
+
+      {/* Kakao Share Floating Button */}
+      <KakaoShareButton profile={profile} customerGuid={guid} />
 
       {/* Bottom Navigation (Tab Bar) */}
       <div className="absolute bottom-0 w-full bg-white border-t border-slate-200 flex justify-around items-center h-16 z-20 pb-2">
