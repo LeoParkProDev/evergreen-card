@@ -1,20 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { fetchCustomer } from './api';
+import React from 'react';
+import { useCustomer } from './hooks/useCustomer';
 import EvergreenCard from './EvergreenCard';
 
 function App() {
-  const [demoData, setDemoData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    async function loadDemo() {
-      setIsLoading(true);
-      const data = await fetchCustomer('demo'); // demo는 로컬 폴백 사용됨
-      setDemoData(data);
-      setIsLoading(false);
-    }
-    loadDemo();
-  }, []);
+  // 'demo' 데이터 로딩 (React Query 사용)
+  const { data: demoData, isLoading } = useCustomer('demo');
 
   if (isLoading) {
     return (
