@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
-import { Phone, Mail, MapPin, MessageSquare, CreditCard, Grid, ArrowLeft } from 'lucide-react';
+import { Phone, Mail, MapPin, MessageSquare, CreditCard, Grid, ArrowLeft, QrCode } from 'lucide-react';
 import { getCustomerData } from './data/customers';
 import { analytics } from './analytics';
 import KakaoShareButton from './components/KakaoShareButton';
+import QrCodeModal from './components/QrCodeModal';
 
 export default function EvergreenCard({ customerData, customerGuid }) {
   // customerData가 없으면 demo 데이터 사용
@@ -20,6 +21,7 @@ export default function EvergreenCard({ customerData, customerGuid }) {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [toastMessage, setToastMessage] = useState('');
   const [showToast, setShowToast] = useState(false);
+  const [showQr, setShowQr] = useState(false);
   const scrollAreaRef = useRef(null);
 
   // 브라우저 탭 제목 및 파비콘 설정
@@ -178,6 +180,15 @@ export default function EvergreenCard({ customerData, customerGuid }) {
                   {profile.bannerHeadline || "산업용 필터의 모든 것"}<br />{profile.company}
                 </div>
               </div>
+              
+              {/* Hidden QR Code Button (Top-Right of Banner) */}
+              <button
+                onClick={() => setShowQr(true)}
+                className="absolute top-0 right-0 w-[30px] h-[30px] flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity z-10"
+                aria-label="QR 코드 생성"
+              >
+                <QrCode className="w-3 h-3 text-white/50" />
+              </button>
             </div>
 
             {/* Profile Card */}
@@ -345,6 +356,14 @@ export default function EvergreenCard({ customerData, customerGuid }) {
 
       {/* Kakao Share Floating Button */}
       <KakaoShareButton profile={profile} customerGuid={guid} />
+
+      {/* QR Code Modal */}
+      {showQr && (
+        <QrCodeModal 
+          url={`https://evergreen-link.vercel.app/${guid === 'demo' ? '' : guid}`}
+          onClose={() => setShowQr(false)} 
+        />
+      )}
 
       {/* Bottom Navigation (Tab Bar) */}
       <div className="absolute bottom-0 w-full bg-white border-t border-slate-200 flex justify-around items-center h-16 z-20 pb-2">
