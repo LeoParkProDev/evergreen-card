@@ -69,8 +69,8 @@ export default function EvergreenCard({ customerData, customerGuid }) {
   const handleSwitchTab = (tab) => {
     // 카탈로그 탭은 준비중 (주석 해제 시 동작)
     if (tab === 'catalog') {
-      // showToastMessage('준비중인 기능입니다');
-      // return;
+      showToastMessage('지원 준비중인 기능입니다');
+      return;
     }
 
     // 탭 전환 추적
