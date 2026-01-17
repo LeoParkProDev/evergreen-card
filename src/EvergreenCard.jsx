@@ -1,14 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Phone, Mail, MapPin, MessageSquare, CreditCard, Grid, ArrowLeft } from 'lucide-react';
 import { getCustomerData } from './data/customers';
+import { analytics } from './analytics';
 
-export default function EvergreenCard({ customerData }) {
+export default function EvergreenCard({ customerData, customerGuid }) {
   // customerData가 없으면 demo 데이터 사용
   const data = customerData || getCustomerData('demo');
 
   // 고객 데이터에서 profile과 products 가져오기
   const profile = data.profile;
   const products = data.products;
+
+  // 고객 GUID (추적용)
+  const guid = customerGuid || data.guid || 'demo';
 
   const [activeTab, setActiveTab] = useState('card'); // 'card' or 'catalog'
   const [showSpec, setShowSpec] = useState(false);
@@ -45,6 +49,15 @@ export default function EvergreenCard({ customerData }) {
     };
   }, [profile]);
 
+  // 탭 변경 시 뷰 추적
+  useEffect(() => {
+    if (activeTab === 'card' && !showSpec) {
+      analytics.viewCard(guid);
+    } else if (activeTab === 'catalog' && !showSpec) {
+      analytics.viewCatalog(guid);
+    }
+  }, [activeTab, showSpec, guid]);
+
   // 색상 팔레트 (ex/index.html 기반)
   const colors = {
     primary: '#0f172a', // slate-900
@@ -59,6 +72,9 @@ export default function EvergreenCard({ customerData }) {
       return;
     }
 
+    // 탭 전환 추적
+    analytics.switchTab(activeTab, tab, guid);
+
     setActiveTab(tab);
     setShowSpec(false);
     if (scrollAreaRef.current) {
@@ -69,6 +85,9 @@ export default function EvergreenCard({ customerData }) {
   const handleShowSpec = (productId) => {
     const product = products.find(p => p.id === productId);
     if (product) {
+      // 제품 상세 보기 추적
+      analytics.viewProduct(product.id, product.name, guid);
+
       setSelectedProduct(product);
       setShowSpec(true);
       if (scrollAreaRef.current) {
@@ -95,6 +114,8 @@ export default function EvergreenCard({ customerData }) {
 
   // 전화 걸기
   const handleCall = () => {
+    // 전화 클릭 추적
+    analytics.clickCall(profile.phone, guid);
     window.location.href = `tel:${profile.phone}`;
   };
 
@@ -102,6 +123,8 @@ export default function EvergreenCard({ customerData }) {
   const handleCopyAddress = async () => {
     try {
       await navigator.clipboard.writeText(profile.address);
+      // 주소 복사 추적
+      analytics.copyAddress(profile.address, guid);
       showToastMessage('주소가 복사되었습니다');
     } catch (err) {
       showToastMessage('복사에 실패했습니다');
@@ -110,11 +133,15 @@ export default function EvergreenCard({ customerData }) {
 
   // 이메일 보내기
   const handleEmail = () => {
+    // 이메일 클릭 추적
+    analytics.clickEmail(profile.email, guid);
     window.location.href = `mailto:${profile.email}`;
   };
 
   // 간편 문자
   const handleSMS = () => {
+    // SMS 클릭 추적
+    analytics.clickSMS(profile.phone, guid);
     const message = encodeURIComponent('안녕하세요, 연락 부탁드립니다.');
     window.location.href = `sms:${profile.phone}?body=${message}`;
   };
@@ -292,6 +319,8 @@ export default function EvergreenCard({ customerData }) {
                 <button
                   className="w-full mt-8 py-4 bg-slate-900 text-white font-bold rounded-xl shadow-lg active:scale-95 transition-transform"
                   onClick={() => {
+                    // 견적 문의 추적
+                    analytics.requestQuote(selectedProduct.id, selectedProduct.name, guid);
                     showToastMessage('견적 요청이 전송되었습니다');
                     setTimeout(() => handleHideSpec(), 800);
                   }}

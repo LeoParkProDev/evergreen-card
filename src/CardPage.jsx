@@ -12,5 +12,5 @@ export default function CardPage() {
     return <Navigate to="/" replace />;
   }
 
-  return <EvergreenCard customerData={customerData} />;
+  return <EvergreenCard customerData={customerData} customerGuid={guid} />;
 }
