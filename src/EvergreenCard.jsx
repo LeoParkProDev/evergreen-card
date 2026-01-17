@@ -153,7 +153,7 @@ export default function EvergreenCard({ customerData, customerGuid }) {
     <div className="min-h-screen bg-slate-50 flex flex-col relative font-sans">
       {/* Header */}
       <header className="bg-white p-4 sticky top-0 z-20 flex justify-center items-center shadow-sm border-b border-slate-100">
-        <span className="font-bold text-slate-800 text-lg tracking-tight">EVERGREEN</span>
+        <span className="font-bold text-slate-800 text-lg tracking-tight">EVERGREEN-LINK</span>
       </header>
 
       {/* Scrollable Content Area */}
