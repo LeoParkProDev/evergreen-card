@@ -9,29 +9,26 @@ export async function fetchCustomer(guid) {
   }
 
   try {
-    // 2. Customers 테이블 조회
-    const { data: customer, error: custError } = await supabase
+    // 2. Customers 및 Products 테이블 동시 조회 (Join Query)
+    // 외래키 관계를 이용하여 한 번의 요청으로 모든 데이터를 가져옵니다.
+    const { data: customer, error } = await supabase
       .from('customers')
-      .select('*')
+      .select(`
+        *,
+        products (*)
+      `)
       .eq('guid', guid)
       .single();
 
-    if (custError || !customer) {
-      console.warn('Customer not found in DB, checking local fallback...', custError);
+    if (error || !customer) {
+      console.warn('Customer not found in DB, checking local fallback...', error);
       return getLocalCustomerData(guid); // DB에 없으면 로컬 파일 확인 (과도기용)
     }
 
-    // 3. Products 테이블 조회
-    const { data: products, error: prodError } = await supabase
-      .from('products')
-      .select('*')
-      .eq('customer_guid', guid);
+    // 3. 데이터 구조 변환 (DB 컬럼 -> 앱 내부 객체 구조)
+    // products는 이제 customer 객체 내부의 배열로 존재합니다.
+    const products = customer.products || [];
 
-    if (prodError) {
-      console.error('Error fetching products:', prodError);
-    }
-
-    // 4. 데이터 구조 변환 (DB 컬럼 -> 앱 내부 객체 구조)
     return {
       guid: customer.guid,
       profile: {

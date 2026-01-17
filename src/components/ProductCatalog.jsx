@@ -22,6 +22,7 @@ export default function ProductCatalog({ products, onSelectProduct }) {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 src={product.img}
                 alt={product.name}
+                loading="lazy"
               />
               <div className={`absolute top-2 right-2 ${product.badgeColor} text-white text-[10px] font-bold px-2 py-1 rounded`}>
                 {product.badge}
